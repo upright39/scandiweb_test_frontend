@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 function DynamicForm() {
   const [product_details, setProductDetails] = useState({
     sku: "",
@@ -15,12 +15,12 @@ function DynamicForm() {
     length: "",
     errorList: []
   });
-
+  const formRef = useRef(null);
   let navigate = useNavigate()
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    formRef.current.dispatchEvent(new Event('submit'));
     const formData = {
       sku: product_details.sku,
       names: product_details.names,
@@ -39,81 +39,104 @@ function DynamicForm() {
         navigate("/");
       } else {
         setProductDetails({ ...product_details, errorList: res.data.errors })
-
-        console.log(res.data.errors)
       }
 
     })
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
+       <header>
+        <h3 className="header-title">Product List</h3>
+         <div className="header-button"> 
+         <button type="submit" onClick={handleSubmit}>Save</button> 
+         <button><Link to={`/`}>Cancel</Link></button>
+         </div>
+      </header>
+      <hr></hr>
+      <div id="product-form">
+      <form ref={formRef}>
 
-      <div className="item">
-        <label className="label">SKU</label>
-        <input required name="size" type="text" value={product_details.sku} onChange={(e) => setProductDetails({ ...product_details, sku: e.target.value })} />
-        {product_details.errorList.sku}
-      </div>
-
-      <div className="item">
-        <label className="label">Name</label>
-        <input required type="text" value={product_details.names} onChange={(e) => setProductDetails({ ...product_details, names: e.target.value })} />
-        {product_details.errorList.names}
-      </div>
-
-      <div className="item">
-        <label className="label"> Price ($)</label>
-        <input required type="text" value={product_details.price} onChange={(e) => setProductDetails({ ...product_details, price: e.target.value })} />
-        {product_details.errorList.price}
-      </div>
-
-      <label>Type Switcher</label>
-      <select name="types" onChange={(e) => setProductDetails({ ...product_details, types: e.target.value })}>
-        <option>Select Type</option>
-        <option value="DVD">DVD</option>
-        <option value="Furniture">Furniture</option>
-        <option value="Book">Book</option>  
-      </select>
-
-      {/* render form fields based on the selected types */}
-      {product_details.types === 'DVD' && (
         <div className="item">
-          <label>Size (MB)</label>
-          <input type="text" value={product_details.size} onChange={(e) => setProductDetails({ ...product_details, size: e.target.value })} />
-          {product_details.errorList.size}
+          <label className="label">SKU</label>
+          <input required className="input" type="text" value={product_details.sku} onChange={(e) => setProductDetails({ ...product_details, sku: e.target.value })} />
+          <span>{product_details.errorList.sku}</span> 
         </div>
-      )}
 
-      {product_details.types === 'Book' && (
         <div className="item">
-          <label>Weight (KG)</label>
-          <input type="text" value={product_details.weight} onChange={(e) => setProductDetails({ ...product_details, weight: e.target.value })} />
-          {product_details.errorList.weight}
+          <label className="label">Name</label>
+          <input required className="input" type="text" value={product_details.names} onChange={(e) => setProductDetails({ ...product_details, names: e.target.value })} />
+          <span>{product_details.errorList.names}</span> 
+          
         </div>
-      )}
 
-      {product_details.types === 'Furniture' && (
-        <>
-          <div className="item">
-            <label>Height (CM)</label>
-            <input type="text" value={product_details.height} onChange={(e) => setProductDetails({ ...product_details, height: e.target.value })} />
-            {product_details.errorList.height}
+        <div className="item">
+          <label className="label"> Price ($)</label>
+          <input required className="input" type="text" value={product_details.price} onChange={(e) => setProductDetails({ ...product_details, price: e.target.value })} />
+          <span>{product_details.errorList.price}</span> 
+        </div>
+
+        <label className="label">Type Switcher</label>
+        <select className="input" id="productType" onChange={(e) => setProductDetails({ ...product_details, types: e.target.value })}>
+          <option>Select Type</option>
+          <option value="DVD">DVD</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Book">Book</option>
+        </select>
+
+        {/* render form fields based on the selected types */}
+        {product_details.types === 'DVD' && (
+          <div id="DVD">
+            <div className="item">
+            <label className="label">Size (MB)</label>
+            <input type="text" className="input" value={product_details.size} onChange={(e) => setProductDetails({ ...product_details, size: e.target.value })} />
+            <span>{product_details.errorList.size}</span> 
+          
           </div>
-          <div className="item">
-            <label>Width (CM)</label>
-            <input type="text" value={product_details.width} onChange={(e) => setProductDetails({ ...product_details, width: e.target.value })} />
-            {product_details.errorList.width}
+          <p className="desc">Please provide the product size </p>
+          </div>
+        )}
+
+        {product_details.types === 'Book' && (
+          <div id="Book">
+           <div className="item">
+            <label className="label">Weight (KG)</label>
+            <input type="text" className="input" value={product_details.weight} onChange={(e) => setProductDetails({ ...product_details, weight: e.target.value })} />
+            <span>{product_details.errorList.weight}</span> 
+            
+          </div>
+          <p className="desc">Please provide the product weight </p>
           </div>
         
-          <div className="item">
-            <label> Length (CM)</label>
-            <input type="text" value={product_details.length} onChange={(e) => setProductDetails({ ...product_details, length: e.target.value })}/>
-            {product_details.errorList.length}</div>
-        </>
-      )}
+        )}
 
-      <button type="submit">Submit</button>
-    </form>
+        {product_details.types === 'Furniture' && (
+          <div id="Furniture">
+            <div className="item">
+              <label className="label">Height (CM)</label>
+              <input type="text" className="input" value={product_details.height} onChange={(e) => setProductDetails({ ...product_details, height: e.target.value })} />
+              <span>{product_details.errorList.height}</span> 
+              
+            </div>
+            <div className="item">
+              <label className="label">Width (CM)</label>
+              <input type="text" className="input" value={product_details.width} onChange={(e) => setProductDetails({ ...product_details, width: e.target.value })} />
+              <span>{product_details.errorList.width}</span> 
+            </div>
+
+            <div className="item">
+              <label className="label"> Length (CM)</label>
+              <input type="text" className="input" value={product_details.length} onChange={(e) => setProductDetails({ ...product_details, length: e.target.value })} />
+              <span>{product_details.errorList.length}</span> 
+              </div>
+              <p className="desc">*Please provide the product dimensions HxWxL</p>
+          </div>
+        )}
+
+
+      </form>
+      </div>
+    </>
 
   );
 

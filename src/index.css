@@ -1,0 +1,146 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0 ;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+}
+
+
+.card{
+position: relative;
+display: flex;
+flex-direction: column;  
+justify-content: center; 
+align-items: center; 
+width: 300px;
+height: 300px;
+margin: 15px;
+padding-top: 10px; 
+box-shadow: 0px 2px 5px rgba(0, 0, 0,0.2);
+}
+
+.delete-checkbox{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+p{
+    margin-top: -10px;
+    text-transform:capitalize;
+}
+
+h4{
+    text-transform:uppercase;
+    margin-top: 0px;
+}
+
+.footer{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+hr{
+   width: 95%;
+   height: 0;
+}
+
+button{
+padding: 5px 10px;
+box-shadow: 2px 2px 4px rgba(5, 5, 5, 0.7);
+border: none;
+text-align: center;
+cursor: pointer;
+margin: 20px 15px;
+}
+
+a{
+    text-decoration: none;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: re;
+    padding: 10px;
+}
+.header-button{
+    /* margin-top: 15px; */
+    display: flex;
+    justify-content: space-between;
+}
+.header-title{
+   margin-left:20px ;
+}
+
+
+.input {
+	/* @apply border border-black rounded-sm w-64 p-2; */
+    padding: 2px;
+    border-color: black;
+    border-radius: 5px;
+    width: 200px;
+    padding: 8px;
+}
+
+.item {
+	
+    margin-bottom: 5px;
+}
+
+.label {
+	display: inline-block;
+	width: 120px;
+}
+
+.desc {
+ font-size: small;
+ margin-top: 10px ; 
+ margin-bottom: 10px; 
+ 
+}
+
+#Furniture{
+   border: 2px solid rgb(63, 61, 61); 
+   padding: 40px 15px 10px 10px;
+   margin-top: 70px;
+   width: 350px;
+}
+
+
+#Book{
+    border: 2px solid rgb(63, 61, 61); 
+    padding: 40px 15px 10px 10px;
+    margin-top: 70px;
+    width: 350px;
+}
+
+#DVD{
+    border: 2px solid rgb(63, 61, 61); 
+    padding: 40px 15px 10px 10px;
+    margin-top: 70px;
+    width: 350px;
+}
+
+#product-form{
+    margin-left: 40px;
+    margin-top: 50px;
+    width: 350px;
+}
+#productType{
+margin-top: 60px;
+}
+
+span{
+    display: inline-block;
+    font-size: small;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 120px;
+    color:red;
+}
