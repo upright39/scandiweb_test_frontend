@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
 function DynamicForm() {
   const [product_details, setProductDetails] = useState({
     sku: "",
@@ -20,9 +21,12 @@ function DynamicForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(!product_details){
+      return null
+    }
     formRef.current.dispatchEvent(new Event('submit'));
     const formData = {
-      sku: product_details.sku,
+      sku: product_details?.sku,
       names: product_details.names,
       price: product_details.price,
       types: product_details.types,
@@ -57,23 +61,29 @@ function DynamicForm() {
       <div id="product-form">
       <form ref={formRef}>
 
-        <div className="item">
+        {/* <div className="item">
           <label className="label">SKU</label>
           <input required className="input" type="text" value={product_details.sku} onChange={(e) => setProductDetails({ ...product_details, sku: e.target.value })} />
           <span>{product_details.errorList.sku}</span> 
+        </div> */}
+
+        <div className="item">
+          <label className="label">SKU</label>
+          <input required className="input" type="text" value={product_details.sku} onChange={(e) => setProductDetails({ ...product_details, sku: e.target.value })} />
+          <span>{product_details.errorList?.sku}</span>    
         </div>
+
 
         <div className="item">
           <label className="label">Name</label>
           <input required className="input" type="text" value={product_details.names} onChange={(e) => setProductDetails({ ...product_details, names: e.target.value })} />
-          <span>{product_details.errorList.names}</span> 
-          
+          <span>{product_details.errorList?.names}</span>        
         </div>
 
         <div className="item">
           <label className="label"> Price ($)</label>
           <input required className="input" type="text" value={product_details.price} onChange={(e) => setProductDetails({ ...product_details, price: e.target.value })} />
-          <span>{product_details.errorList.price}</span> 
+          <span>{product_details.errorList?.price}</span> 
         </div>
 
         <label className="label">Type Switcher</label>
@@ -81,8 +91,9 @@ function DynamicForm() {
           <option>Select Type</option>
           <option value="DVD">DVD</option>
           <option value="Furniture">Furniture</option>
-          <option value="Book">Book</option>
+          <option value="Book">Book</option> 
         </select>
+        <span>{product_details.errorList?.types}</span>
 
         {/* render form fields based on the selected types */}
         {product_details.types === 'DVD' && (
@@ -90,7 +101,7 @@ function DynamicForm() {
             <div className="item">
             <label className="label">Size (MB)</label>
             <input type="text" className="input" value={product_details.size} onChange={(e) => setProductDetails({ ...product_details, size: e.target.value })} />
-            <span>{product_details.errorList.size}</span> 
+            <span>{product_details.errorList?.size}</span> 
           
           </div>
           <p className="desc">Please provide the product size </p>
@@ -102,7 +113,7 @@ function DynamicForm() {
            <div className="item">
             <label className="label">Weight (KG)</label>
             <input type="text" className="input" value={product_details.weight} onChange={(e) => setProductDetails({ ...product_details, weight: e.target.value })} />
-            <span>{product_details.errorList.weight}</span> 
+            <span>{product_details.errorList?.weight}</span> 
             
           </div>
           <p className="desc">Please provide the product weight </p>
@@ -115,25 +126,23 @@ function DynamicForm() {
             <div className="item">
               <label className="label">Height (CM)</label>
               <input type="text" className="input" value={product_details.height} onChange={(e) => setProductDetails({ ...product_details, height: e.target.value })} />
-              <span>{product_details.errorList.height}</span> 
+              <span>{product_details.errorList?.height}</span> 
               
             </div>
             <div className="item">
               <label className="label">Width (CM)</label>
               <input type="text" className="input" value={product_details.width} onChange={(e) => setProductDetails({ ...product_details, width: e.target.value })} />
-              <span>{product_details.errorList.width}</span> 
+              <span>{product_details.errorList?.width}</span> 
             </div>
 
             <div className="item">
               <label className="label"> Length (CM)</label>
               <input type="text" className="input" value={product_details.length} onChange={(e) => setProductDetails({ ...product_details, length: e.target.value })} />
-              <span>{product_details.errorList.length}</span> 
+              <span>{product_details.errorList?.length}</span> 
               </div>
               <p className="desc">*Please provide the product dimensions HxWxL</p>
           </div>
         )}
-
-
       </form>
       </div>
     </>
