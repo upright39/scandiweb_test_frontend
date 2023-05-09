@@ -1,5 +1,5 @@
-import ProductPage from "./ProductPage"
-import  Footer from "./Footer"
+import ProductPage from "./pages/ProductPage"
+import  Footer from "./include/Footer"
 
 
 

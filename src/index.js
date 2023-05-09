@@ -2,8 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from './reportWebVitals';
 import App from './App';
-import ProductAddPage from './ProductAddPage'
-import "./index.css";
+import ProductForm from './pages/ProductForm'
+import "./styles/index.css";
+import "./styles/styles.css"
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/add_page",
-    element: <ProductAddPage/>,
+    element: <ProductForm/>,
   },
 ]);
 

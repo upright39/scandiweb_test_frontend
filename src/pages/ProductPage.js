@@ -63,7 +63,7 @@ const ProductPage = () => {
           />
         ))}
       </div>
-      <hr></hr>
+    
     </>
   );
 };
