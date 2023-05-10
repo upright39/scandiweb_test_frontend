@@ -3,11 +3,13 @@ p{
     text-transform:capitalize;
 }
 
-h4{
+.uppercase{
     text-transform:uppercase;
-    margin-top: 0px;
 }
 
+a{
+    text-decoration: none;
+}
 
 .h190{
     height: 190px;
@@ -90,28 +92,6 @@ h4{
 .m-l120{
     margin-left: 120px;   
 }
-
-/* #p-t40{
-  padding-top: 40px;
-}
-
-#p-r15{
-    padding-right: 15px;
-}
-
-#p-b10{
-   padding-bottom: 10px; 
-}
-#p-l10{
-    padding-left: 10px;
-}
-#m-t55{
-    margin-top: 55px;
-}
-
-#w350{
-    width: 350px;
-} */
 
 
    

@@ -43,9 +43,7 @@ cursor: pointer;
 margin: 20px 15px;
 }
 
-a{
-    text-decoration: none;
-}
+
 header{
     display: flex;
     justify-content: space-between;
@@ -69,14 +67,10 @@ header{
 
 .label {
 	display: inline-block;
-	/* width: 120px; */
 }
 
 .desc {
  font-size: small;
- /* margin-top: 10px ; 
- margin-bottom: 10px;  */
- 
 }
 
 #Furniture{
