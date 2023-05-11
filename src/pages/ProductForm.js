@@ -22,6 +22,7 @@ const ProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     formRef.current.dispatchEvent(new Event('submit'));
 
     const validationErrors = formValidation(types, sku, names, price, size, length, weight, width, height);
@@ -41,7 +42,7 @@ const ProductForm = () => {
         }
 
       let details = formattedDetails(types,size,weight,length,width,height)
-      
+
         let Data = {
           sku: sku,
           names: names,
