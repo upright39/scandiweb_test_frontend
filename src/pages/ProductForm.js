@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import formValidation from "../validation/formValidation";
+import formattedDetails from '../include/formattedDetails';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -39,22 +40,16 @@ const ProductForm = () => {
           return;
         }
 
-        let formattedDetails = "";
-        if (types === "DVD") {
-          formattedDetails = `Size: ${size} MB`;
-        } else if (types === "Book") {
-          formattedDetails = `Weight: ${weight} KG`;
-        } else if (types === "Furniture") {
-          formattedDetails = `Dimensions: ${length} x ${width} x ${height}`;
-        }
-
+      let details = formattedDetails(types,size,weight,length,width,height)
+      
         let Data = {
           sku: sku,
           names: names,
           price: price,
           types: types,
-          details: formattedDetails,
+          details: details,
         }
+
         const submitResponse = await axios.post('http://localhost/test-scandiweb/api/product/create_product.php', Data);
 
         if (submitResponse.data) {
