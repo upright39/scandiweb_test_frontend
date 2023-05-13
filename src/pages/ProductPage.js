@@ -47,10 +47,10 @@ const ProductPage = () => {
     <>
       <header>
         <h3 className="header-title">Product List</h3>
-         <div className="header-button"> 
-         <button><Link to={`add_page`}>ADD</Link></button> 
-          <button onClick={handleDeleteSelectedItems}>MASS DELETE</button> 
-         </div>
+        <div className="header-button">
+          <button><Link to={`add_page`}>ADD</Link></button>
+          <button onClick={handleDeleteSelectedItems}>MASS DELETE</button>
+        </div>
       </header>
       <hr></hr>
       <div className='container'>
@@ -63,7 +63,7 @@ const ProductPage = () => {
           />
         ))}
       </div>
-    
+
     </>
   );
 };

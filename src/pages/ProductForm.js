@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import formValidation from "../validation/formValidation";
-import formattedDetails from '../include/formattedDetails';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -25,7 +24,7 @@ const ProductForm = () => {
     
     formRef.current.dispatchEvent(new Event('submit'));
 
-    const validationErrors = formValidation(types, sku, names, price, size, length, weight, width, height);
+    const validationErrors = formValidation(types, sku, names, price,size,length,weight,width,height);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
@@ -41,19 +40,21 @@ const ProductForm = () => {
           return;
         }
 
-      let details = formattedDetails(types,size,weight,length,width,height)
-
         let Data = {
           sku: sku,
           names: names,
           price: price,
           types: types,
-          details: details,
+          size:size,
+          weight:weight,
+          length:length,
+          width:width,
+          height:height
         }
 
         const submitResponse = await axios.post('http://localhost/test-scandiweb/api/product/create_product.php', Data);
 
-        if (submitResponse.data) {
+        if (submitResponse.data.status === 200) {
           navigate('/')
         } else {
           setErrors({ sku: "Error occurred while submitting product" });
