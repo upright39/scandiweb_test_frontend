@@ -10,7 +10,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     // Fetch the list of items from the API and update the state variable
-    axios.get('http://localhost/test-scandiweb/api/product/read_product.php')
+    axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php')
       .then(res => {
         setItems(res.data.data)
 
@@ -32,7 +32,7 @@ const ProductPage = () => {
 
   const handleDeleteSelectedItems = () => {
     // Send a request to the API to delete the selected items
-    axios.delete('http://localhost/test-scandiweb/api/product/delete_product.php', {
+    axios.delete('https://upright-scandiweb.000webhostapp.com/api/product/delete_product.php', {
       data: { ids: selectedItems }
     })
       .then(() => {

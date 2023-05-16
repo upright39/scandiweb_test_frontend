@@ -16,15 +16,15 @@ const ProductForm = () => {
   const [length, setLength] = useState("");
   const [errors, setErrors] = useState({});
 
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const formRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     formRef.current.dispatchEvent(new Event('submit'));
 
-    const validationErrors = formValidation(types, sku, names, price,size,length,weight,width,height);
+    const validationErrors = formValidation(types, sku, names, price, size, length, weight, width, height);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
@@ -32,10 +32,9 @@ const ProductForm = () => {
     } else {
 
       try {
-        const response = await axios.get(`http://localhost/test-scandiweb/api/product/find_sku_product.php?sku=${sku}`);
-        const data = response.data;
+        const response = await axios.get(`https://upright-scandiweb.000webhostapp.com/api/product/find_sku_product.php?sku=${sku}`);
 
-        if (!data.isUnique) {
+        if (!response.data.isUnique) {
           setErrors({ sku: "SKU already exists" });
           return;
         }
@@ -45,14 +44,14 @@ const ProductForm = () => {
           names: names,
           price: price,
           types: types,
-          size:size,
-          weight:weight,
-          length:length,
-          width:width,
-          height:height
+          size: size,
+          weight: weight,
+          length: length,
+          width: width,
+          height: height
         }
 
-        const submitResponse = await axios.post('http://localhost/test-scandiweb/api/product/create_product.php', Data);
+        const submitResponse = await axios.post('https://upright-scandiweb.000webhostapp.com/api/product/create_product.php', Data);
 
         if (submitResponse.data.status === 200) {
           navigate('/')
@@ -60,8 +59,7 @@ const ProductForm = () => {
           setErrors({ sku: "Error occurred while submitting product" });
         }
       } catch (error) {
-        console.error(error);
-        setErrors({ sku: "Error occurred while checking SKU" });
+        console.error(error)
       }
     }
   };

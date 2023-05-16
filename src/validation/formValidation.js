@@ -1,4 +1,4 @@
-const formValidation = (types, sku, names, price, size,length,weight,width,height) => {
+const formValidation = (types, sku, names, price, size, length, weight, width, height) => {
   const errors = {};
 
   if (!sku) {
@@ -11,8 +11,6 @@ const formValidation = (types, sku, names, price, size,length,weight,width,heigh
     errors.names = "Name must only contain letters and spaces";
   }
 
-
-
   if (!price) {
     errors.price = "Price is required.";
   } else if (isNaN(price)) {
@@ -20,45 +18,45 @@ const formValidation = (types, sku, names, price, size,length,weight,width,heigh
   }
 
   if (!types) {
-      errors.type = "product type is required";
-    }
+    errors.type = "product type is required";
+  }
 
-   if (types === "DVD") {
-    if(!size){
+  if (types === "DVD") {
+    if (!size) {
       errors.size = "Size is required";
-    } else if(isNaN(size)){
+    } else if (isNaN(size)) {
       errors.size = "height must be a valid number"
-    }   
+    }
   }
 
   if (types === "Furniture") {
     if (!height) {
       errors.height = "height is required";
-    }else if (isNaN(height)) {
+    } else if (isNaN(height)) {
       errors.height = "height must be a valid number.";
     }
 
     if (!width) {
       errors.width = "width is required";
-    }else if (isNaN(width)) {
+    } else if (isNaN(width)) {
       errors.width = "width must be a valid number.";
     }
 
     if (!length) {
       errors.length = "length is required";
-    }else if (isNaN(length)) {
+    } else if (isNaN(length)) {
       errors.length = "length must be a valid number.";
     }
   }
 
-   if (types === "Book") {
+  if (types === "Book") {
 
-      if(!weight){
-          errors.weight = "weight is required";
-      }else if(isNaN(weight)){
-        errors.weight = "weight must be a valid number";
-      }    
+    if (!weight) {
+      errors.weight = "weight is required";
+    } else if (isNaN(weight)) {
+      errors.weight = "weight must be a valid number";
     }
+  }
 
   return errors;
 };
