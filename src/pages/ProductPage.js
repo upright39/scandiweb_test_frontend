@@ -10,6 +10,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     // Fetch the list of items from the API and update the state variable
+    
     axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php')
       .then(res => {
         setItems(res.data.data)
@@ -31,18 +32,27 @@ const ProductPage = () => {
   };
 
   const handleDeleteSelectedItems = () => {
-    // Send a request to the API to delete the selected items
+  //  Send a request to the API to delete the selected items
     axios.delete('https://upright-scandiweb.000webhostapp.com/api/product/delete_product.php', {
-      data: { ids: selectedItems }
-    })
-      .then(() => {
-        // Update the state variable holding the list of items to remove the deleted items
+
+      data: { ids: selectedItems} 
+
+    }).then(() => {
+        // Update the state variable holding the list of items to remove the deleted itemss
         const updatedItems = items.filter(item => !selectedItems.includes(item.id));
         setItems(updatedItems);
         setSelectedItems([]);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   };
+
+
+
+
+
+
+
+  
   return (
     <>
       <header>
@@ -66,6 +76,10 @@ const ProductPage = () => {
 
     </>
   );
+
+
+
+
 };
 
 export default ProductPage;

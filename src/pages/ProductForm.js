@@ -51,7 +51,7 @@ const ProductForm = () => {
           height: height
         }
 
-        const submitResponse = await axios.post('https://upright-scandiweb.000webhostapp.com/api/product/create_product.php', Data);
+        const submitResponse = await axios.post('https://upright-scandiweb.000webhostapp.com/api/product/create_product.php', JSON.stringify(Data));
 
         if (submitResponse.data.status === 200) {
           navigate('/')
