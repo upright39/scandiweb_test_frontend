@@ -1,5 +1,5 @@
 
-function Products({ sku, names, price, type, details, checked, onChange }) {
+function Products({ sku, names, price, details, checked, onChange }) {
     return (
         <>
             <div className="card h190 m15 p-10">

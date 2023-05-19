@@ -74,29 +74,29 @@ const ProductForm = () => {
         </div>
       </header>
       <hr></hr>
-      <div id="product-form">
-        <form ref={formRef}>
+      <>
+        <form ref={formRef} id="product-form">
 
           <div className="m-b5">
             <label className="label w-120">SKU</label>
-            <input className="input w-200 p-8" type="text" value={sku} onChange={(e) => setSku(e.target.value)} />
+            <input id="sku" className="input w-200 p-8" type="text" value={sku} onChange={(e) => setSku(e.target.value)} />
             <span>{errors?.sku}</span>
           </div>
 
           <div className="m-b5">
             <label className="label w-120">Name</label>
-            <input className="input w-200 p-8" type="text" value={names} onChange={(e) => setName(e.target.value)} />
+            <input id="name" className="input w-200 p-8" type="text" value={names} onChange={(e) => setName(e.target.value)} />
             <span>{errors?.names}</span>
           </div>
 
           <div className="m-b5">
             <label className="label w-120"> Price ($)</label>
-            <input className="input w-200 p-8" type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
+            <input id="price" className="input w-200 p-8" type="text" value={price} onChange={(e) => setPrice(e.target.value)} />
             <span>{errors?.price}</span>
           </div>
 
           <label className="label w-120">Type Switcher</label>
-          <select className="input w-200  p-8" value={types} id="productType" onChange={(e) => setProductType(e.target.value)}>
+          <select id="productType" className="input w-200  p-8" value={types} onChange={(e) => setProductType(e.target.value)}>
             <option>Select Type</option>
             <option value="DVD">DVD</option>
             <option value="Furniture">Furniture</option>
@@ -109,7 +109,7 @@ const ProductForm = () => {
             <div id="DVD">
               <div className="m-b5">
                 <label className="label w-120">Size (MB)</label>
-                <input type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
+                <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
                 <span>{errors?.size}</span>
 
               </div>
@@ -121,19 +121,19 @@ const ProductForm = () => {
             <div id="Furniture">
               <div className="m-b5">
                 <label className="label w-120">Height (CM)</label>
-                <input type="text" className="input w-200 p-8" value={height} onChange={(e) => setHeight(e.target.value)} />
+                <input id="height" type="text" className="input w-200 p-8" value={height} onChange={(e) => setHeight(e.target.value)} />
                 <span>{errors?.height}</span>
               </div>
 
               <div className="m-b5">
                 <label className="label w-120">Width (CM)</label>
-                <input type="text" className="input w-200 p-8" value={width} onChange={(e) => setWidth(e.target.value)} />
+                <input id="width" type="text" className="input w-200 p-8" value={width} onChange={(e) => setWidth(e.target.value)} />
                 <span>{errors?.width}</span>
               </div>
 
               <div className="m-b5">
                 <label className="label w-120"> Length (CM)</label>
-                <input type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
+                <input id="lenght" type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
                 <span>{errors?.length}</span>
               </div>
               <p className="desc m-t10 m-b10">*Please provide the product dimensions HxWxL</p>
@@ -144,7 +144,7 @@ const ProductForm = () => {
             <div id="Book">
               <div className="m-b5">
                 <label className="label w-120">Weight (KG)</label>
-                <input type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                <input id="weight" type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
                 <span>{errors?.weight}</span>
 
               </div>
@@ -153,7 +153,7 @@ const ProductForm = () => {
           )}
 
         </form>
-      </div>
+      </>
     </>
 
   )
