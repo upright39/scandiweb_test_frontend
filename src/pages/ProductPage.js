@@ -10,17 +10,20 @@ const ProductPage = () => {
 
   useEffect(() => {
     // Fetch the list of items from the API and update the state variable
-    
-    axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php')
-      .then(res => {
-        setItems(res.data.data)
-
-        if (res.data.message === "No Post Found") {
-          setItems([]);
-        }
-      })
-      .catch(err => console.log(err));
+    fetchItems();
   }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php');
+      setItems(response.data.data);
+      if (response.data.message === "No Post Found") {
+        setItems([]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleCheckboxChange = (itemId) => {
     // Update the selected items state variable when a checkbox is checked or unchecked
@@ -31,29 +34,20 @@ const ProductPage = () => {
     }
   };
 
-  const handleDeleteSelectedItems = () => {
-  //  Send a request to the API to delete the selected items
-    axios.delete('https://upright-scandiweb.000webhostapp.com/api/product/delete_product.php', {
-
-      data: { ids: selectedItems} 
-
-    }).then(() => {
-        // Update the state variable holding the list of items to remove the deleted itemss
-        const updatedItems = items.filter(item => !selectedItems.includes(item.id));
-        setItems(updatedItems);
-        setSelectedItems([]);
-      })
-      .catch(err => console.error(err));
+  const handleDeleteSelectedItems = async () => {
+    try {
+      // Send a request to the API to delete the selected items
+      await axios.post('https://upright-scandiweb.000webhostapp.com/api/product/delete_product.php', JSON.stringify({ ids: selectedItems }));
+      // Update the state variable holding the list of items to remove the deleted items
+      setItems(items.filter(item => !selectedItems.includes(item.id)));
+      setSelectedItems([]);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-
-
-
-
-
-
-  
   return (
+
     <>
       <header>
         <h3 className="header-title">Product List</h3>
@@ -76,10 +70,6 @@ const ProductPage = () => {
 
     </>
   );
-
-
-
-
 };
 
 export default ProductPage;
