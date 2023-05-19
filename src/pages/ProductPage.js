@@ -7,6 +7,8 @@ const ProductPage = () => {
 
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
 
   useEffect(() => {
     // Fetch the list of items from the API and update the state variable
@@ -17,9 +19,10 @@ const ProductPage = () => {
     try {
       const response = await axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php');
       setItems(response.data.data);
-      if (response.data.message === "No Post Found") {
-        setItems([]);
-      }
+      setIsLoading(false);
+      // if (response.data.message === "No Post Found") {
+      //   setItems([]);
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -45,6 +48,10 @@ const ProductPage = () => {
       console.log(error);
     }
   };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
 

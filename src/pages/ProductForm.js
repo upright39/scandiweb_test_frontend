@@ -108,7 +108,7 @@ const ProductForm = () => {
             <div id="DVD">
               <div className="m-b5">
                 <label className="label w-120">Size (MB)</label>
-                <input id="size" type="text" name="size" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
+                <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
                 <span>{errors?.size}</span>
 
               </div>
