@@ -100,11 +100,12 @@ header{
     width: 350px;
 }
 
-#product-form{
+#product_form{
     margin-left: 40px;
     margin-top: 40px;
     width: 350px;
 }
+
 #productType{
 margin-top: 40px;
 }
