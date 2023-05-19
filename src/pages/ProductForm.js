@@ -133,7 +133,7 @@ const ProductForm = () => {
 
               <div className="m-b5">
                 <label className="label w-120"> Length (CM)</label>
-                <input id="lenght" type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
+                <input id="length" type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
                 <span>{errors?.length}</span>
               </div>
               <p className="desc m-t10 m-b10">*Please provide the product dimensions HxWxL</p>
