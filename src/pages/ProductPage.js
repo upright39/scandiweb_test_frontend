@@ -7,7 +7,7 @@ const ProductPage = () => {
 
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  ;
 
 
   useEffect(() => {
@@ -18,11 +18,10 @@ const ProductPage = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php');
-      setItems(response.data.data);
-      setIsLoading(false);
-      // if (response.data.message === "No Post Found") {
-      //   setItems([]);
-      // }
+      setItems(response.data.data);     
+      if (response.data.message === "No Post Found") {
+        setItems([]);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -48,10 +47,6 @@ const ProductPage = () => {
       console.log(error);
     }
   };
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   return (
 
