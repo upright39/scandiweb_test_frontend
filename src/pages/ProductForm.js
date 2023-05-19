@@ -74,7 +74,7 @@ const ProductForm = () => {
         </div>
       </header>
       <hr></hr>
-      <>
+      <main>
         <form ref={formRef} id="product_form">
 
           <div className="m-b5">
@@ -153,7 +153,7 @@ const ProductForm = () => {
           )}
 
         </form>
-      </>
+      </main>
     </>
 
   )
