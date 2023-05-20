@@ -24,7 +24,7 @@ const ProductForm = () => {
 
     formRef.current.dispatchEvent(new Event('submit'));
 
-    const validationErrors = formValidation(types, sku, names, price, size, length, weight, width, height);
+    const validationErrors = formValidation(types, sku, name, price, size, length, weight, width, height);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
