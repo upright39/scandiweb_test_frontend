@@ -104,15 +104,15 @@ const ProductForm = () => {
           </select>
           <span>{errors?.type}</span>
 
-          {types === 'DVD' && (
-            <div id="DVD">
+          {types === 'Book' && (
+            <div id="Book">
               <div className="m-b5">
-                <label className="label w-120">Size (MB)</label>
-                <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
-                <span>{errors?.size}</span>
+                <label className="label w-120">Weight (KG)</label>
+                <input id="weight" type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                <span>{errors?.weight}</span>
 
               </div>
-              <p className="desc m-t10 m-b10">Please provide the product size </p>
+              <p className="desc m-t10 m-b10">Please provide the product weight </p>
             </div>
           )}
 
@@ -139,15 +139,15 @@ const ProductForm = () => {
             </div>
           )}
 
-          {types === 'Book' && (
-            <div id="Book">
+          {types === 'DVD' && (
+            <div id="DVD">
               <div className="m-b5">
-                <label className="label w-120">Weight (KG)</label>
-                <input id="weight" type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
-                <span>{errors?.weight}</span>
+                <label className="label w-120">Size (MB)</label>
+                <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
+                <span>{errors?.size}</span>
 
               </div>
-              <p className="desc m-t10 m-b10">Please provide the product weight </p>
+              <p className="desc m-t10 m-b10">Please provide the product size </p>
             </div>
           )}
 
