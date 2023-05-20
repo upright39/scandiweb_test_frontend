@@ -15,7 +15,7 @@ const ProductPage = () => {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get('http://localhost/test-scandiweb/api/product/read_product.php');
+      const response = await axios.get('https://upright-scandiweb.000webhostapp.com/api/product/read_product.php');
       setItems(response.data.data);     
       if (response.data.message === "No Post Found") {
         setItems([]);
