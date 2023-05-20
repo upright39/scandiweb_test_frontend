@@ -51,7 +51,7 @@ const ProductForm = () => {
           height: height
         }
 
-        const submitResponse = await axios.post('https://upright-scandiweb.000webhostapp.com/api/product/create_product.php', JSON.stringify(Data));
+        const submitResponse = await axios.post('http://localhost/test-scandiweb/api/product/create_product.php', JSON.stringify(Data));
 
         if (submitResponse.data.status === 200) {
           navigate('/')
@@ -63,6 +63,58 @@ const ProductForm = () => {
       }
     }
   };
+
+  const mydetails = () => {
+
+    if (types === 'Book') {
+      return (<div id="Book">
+        <div className="m-b5">
+          <label className="label w-120">Weight (KG)</label>
+          <input id="weight" type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
+          <span>{errors?.weight}</span>
+        </div>
+        <p className="desc m-t10 m-b10">Please provide the product weight </p>
+      </div>)
+    } else if (types === 'DVD') {
+      return (
+        <div id="DVD">
+          <div className="m-b5">
+            <label className="label w-120">Size (MB)</label>
+            <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
+            <span>{errors?.size}</span>
+
+          </div>
+          <p className="desc m-t10 m-b10">Please provide the product size </p>
+        </div>
+      )
+
+    } else if (types === 'Furniture') {
+
+      return(
+        <div id="Furniture">
+          <div className="m-b5">
+            <label className="label w-120">Height (CM)</label>
+            <input id="height" type="text" className="input w-200 p-8" value={height} onChange={(e) => setHeight(e.target.value)} />
+            <span>{errors?.height}</span>
+          </div>
+
+          <div className="m-b5">
+            <label className="label w-120">Width (CM)</label>
+            <input id="width" type="text" className="input w-200 p-8" value={width} onChange={(e) => setWidth(e.target.value)} />
+            <span>{errors?.width}</span>
+          </div>
+
+          <div className="m-b5">
+            <label className="label w-120"> Length (CM)</label>
+            <input id="length" type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
+            <span>{errors?.length}</span>
+          </div>
+          <p className="desc m-t10 m-b10">*Please provide the product dimensions HxWxL</p>
+        </div>
+      )
+    }
+
+  }
 
   return (
     <>
@@ -104,54 +156,7 @@ const ProductForm = () => {
           </select>
           <span>{errors?.type}</span>
 
-          {types === 'Book' && (
-            <div id="Book">
-              <div className="m-b5">
-                <label className="label w-120">Weight (KG)</label>
-                <input id="weight" type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
-                <span>{errors?.weight}</span>
-
-              </div>
-              <p className="desc m-t10 m-b10">Please provide the product weight </p>
-            </div>
-          )}
-
-         {types === 'DVD' && (
-            <div id="DVD">
-              <div className="m-b5">
-                <label className="label w-120">Size (MB)</label>
-                <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
-                <span>{errors?.size}</span>
-
-              </div>
-              <p className="desc m-t10 m-b10">Please provide the product size </p>
-            </div>
-          )}
-
-          {types === 'Furniture' && (
-            <div id="Furniture">
-              <div className="m-b5">
-                <label className="label w-120">Height (CM)</label>
-                <input id="height" type="text" className="input w-200 p-8" value={height} onChange={(e) => setHeight(e.target.value)} />
-                <span>{errors?.height}</span>
-              </div>
-
-              <div className="m-b5">
-                <label className="label w-120">Width (CM)</label>
-                <input id="width" type="text" className="input w-200 p-8" value={width} onChange={(e) => setWidth(e.target.value)} />
-                <span>{errors?.width}</span>
-              </div>
-
-              <div className="m-b5">
-                <label className="label w-120"> Length (CM)</label>
-                <input id="length" type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
-                <span>{errors?.length}</span>
-              </div>
-              <p className="desc m-t10 m-b10">*Please provide the product dimensions HxWxL</p>
-            </div>
-          )}
-
-       
+          {mydetails()}
 
         </form>
       </main>
