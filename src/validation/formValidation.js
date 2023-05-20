@@ -6,9 +6,9 @@ const formValidation = (types, sku, names, price, size, length, weight, width, h
   }
 
   if (!names) {
-    errors.names = "Name is required";
+    errors.name = "Name is required";
   } else if (!/^[a-zA-Z\s]+$/.test(names)) {
-    errors.names = "Name must only contain letters and spaces";
+    errors.name = "Name must only contain letters and spaces";
   }
 
   if (!price) {

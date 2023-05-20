@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const ProductForm = () => {
   const [types, setProductType] = useState("");
   const [sku, setSku] = useState("");
-  const [names, setName] = useState("");
+  const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [size, setSize] = useState("");
   const [weight, setWeight] = useState("");
@@ -41,7 +41,7 @@ const ProductForm = () => {
 
         let Data = {
           sku: sku,
-          names: names,
+          name: name,
           price: price,
           types: types,
           size: size,
@@ -85,8 +85,8 @@ const ProductForm = () => {
 
           <div className="m-b5">
             <label className="label w-120">Name</label>
-            <input id="name" className="input w-200 p-8" type="text" value={names} onChange={(e) => setName(e.target.value)} />
-            <span>{errors?.names}</span>
+            <input id="name" className="input w-200 p-8" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            <span>{errors?.name}</span>
           </div>
 
           <div className="m-b5">
