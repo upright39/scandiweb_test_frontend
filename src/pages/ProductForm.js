@@ -108,7 +108,7 @@ const ProductForm = () => {
             <div id="DVD">
               <div className="m-b5">
                 <label className="label w-120">Size (MB)</label>
-                <input id="size" type="text" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
+                <input id="size" type="text" name ="size" className="input w-200 p-8" value={size} onChange={(e) => setSize(e.target.value)} />
                 <span>{errors?.size}</span>
 
               </div>
@@ -120,19 +120,19 @@ const ProductForm = () => {
             <div id="Furniture">
               <div className="m-b5">
                 <label className="label w-120">Height (CM)</label>
-                <input id="height" type="text" className="input w-200 p-8" value={height} onChange={(e) => setHeight(e.target.value)} />
+                <input id="height" type="text" name="height" className="input w-200 p-8" value={height} onChange={(e) => setHeight(e.target.value)} />
                 <span>{errors?.height}</span>
               </div>
 
               <div className="m-b5">
                 <label className="label w-120">Width (CM)</label>
-                <input id="width" type="text" className="input w-200 p-8" value={width} onChange={(e) => setWidth(e.target.value)} />
+                <input id="width" type="text"name='width' className="input w-200 p-8" value={width} onChange={(e) => setWidth(e.target.value)} />
                 <span>{errors?.width}</span>
               </div>
 
               <div className="m-b5">
                 <label className="label w-120"> Length (CM)</label>
-                <input id="length" type="text" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
+                <input id="length" type="text" name="length" className="input w-200 p-8" value={length} onChange={(e) => setLength(e.target.value)} />
                 <span>{errors?.length}</span>
               </div>
               <p className="desc m-t10 m-b10">*Please provide the product dimensions HxWxL</p>
@@ -143,7 +143,7 @@ const ProductForm = () => {
             <div id="Book">
               <div className="m-b5">
                 <label className="label w-120">Weight (KG)</label>
-                <input id="weight" type="text" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                <input id="weight" type="text" name="weight" className="input w-200 p-8" value={weight} onChange={(e) => setWeight(e.target.value)} />
                 <span>{errors?.weight}</span>
 
               </div>
