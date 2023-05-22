@@ -65,7 +65,7 @@ const ProductForm = () => {
   };
 
   return (
-    <>
+    <body>
       <header>
         <h3 className="header-title">Product List</h3>
         <div className="header-button">
@@ -153,7 +153,7 @@ const ProductForm = () => {
 
         </form>
       </main>
-    </>
+    </body>
 
   )
 
