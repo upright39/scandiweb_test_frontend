@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const ProductForm = () => {
-  const [types, setProductType] = useState("");
+  const [productType, setProductType] = useState("");
   const [sku, setSku] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -24,7 +24,7 @@ const ProductForm = () => {
 
     formRef.current.dispatchEvent(new Event('submit'));
 
-    const validationErrors = formValidation(types, sku, name, price, size, length, weight, width, height);
+    const validationErrors = formValidation(productType, sku, name, price, size, length, weight, width, height);
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
@@ -43,7 +43,7 @@ const ProductForm = () => {
           sku: sku,
           name: name,
           price: price,
-          types: types,
+          productType: productType,
           size: size,
           weight: weight,
           length: length,
@@ -96,7 +96,7 @@ const ProductForm = () => {
           </div>
 
           <label className="label w-120">Type Switcher</label>
-          <select id="productType" className="input w-200  p-8" value={types} onChange={(e) => setProductType(e.target.value)}>
+          <select id="productType" className="input w-200  p-8" name='productType' value={productType} onChange={(e) => setProductType(e.target.value)}>
             <option>Select Type</option>
             <option value="DVD">DVD</option>
             <option value="Furniture">Furniture</option>
@@ -104,7 +104,7 @@ const ProductForm = () => {
           </select>
           <span>{errors?.type}</span>
 
-          {types === 'DVD' && (
+          {productType === 'DVD' && (
             <div id="DVD">
               <div className="m-b5">
                 <label className="label w-120">Size (MB)</label>
@@ -116,7 +116,7 @@ const ProductForm = () => {
             </div>
           )}
 
-          {types === 'Furniture' && (
+          {productType === 'Furniture' && (
             <div id="Furniture">
               <div className="m-b5">
                 <label className="label w-120">Height (CM)</label>
@@ -139,7 +139,7 @@ const ProductForm = () => {
             </div>
           )}
 
-          {types === 'Book' && (
+          {productType === 'Book' && (
             <div id="Book">
               <div className="m-b5">
                 <label className="label w-120">Weight (KG)</label>
